@@ -6,6 +6,7 @@
     public class BaseBurger : IBurger
     {
         public Burger Burger { get; set; }
+        public Dictionary<string, int> ExtraToppings { get; set; }
 
         public BaseBurger()
         {
@@ -19,12 +20,15 @@
                 }
             };
 
+            ExtraToppings = new Dictionary<string, int>();
+
         }
 
         public int PrepareBurger()
         {
-            Burger.Cost = Burger.Pattie + Burger.Toppings.Values.Sum();
+            Burger.Cost = Burger.Pattie + Burger.Toppings.Values.Sum() + ExtraToppings.Values.Sum();
             return Burger.Cost;
         }
+
     }
 }
